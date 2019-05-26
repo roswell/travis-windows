@@ -23,7 +23,7 @@ env:
     - METHOD=ci LISP=sbcl/git
 
 os:
-  - osx
+  - windows
   - linux
 
 cache:
