@@ -68,14 +68,6 @@ before_install:
   - if [ $METHOD = brew ]; then brew update;brew doctor || true; fi
 
 install:
-  - if ! [ -f "$HOME/.rosproxy/proxy" ]; then
-      curl -L https://github.com/snmsts/roswell-proxy/releases/download/v0.5/v0.5-$TRAVIS_OS_NAME.tgz |tar xzf -;
-      cp proxy $HOME/.rosproxy/proxy;
-    fi
-  - $HOME/.rosproxy/proxy daemon
-  - mkdir ~/.roswell
-  - echo "ros.proxy	0	localhost:5000" > ~/.roswell/config
-  - echo "proxy.http.only	0	1" >> ~/.roswell/config
   - if [ $METHOD = documents ]; then sudo apt-get install -qq pandoc ruby-sass; pandoc -v; fi
   - if [ $METHOD = valgrind ];  then sudo apt-get install -qq valgrind > /dev/null; fi
   - if [ $METHOD = brew ] && [ $TRAVIS_OS_NAME = linux ]; then brew install curl ; fi
