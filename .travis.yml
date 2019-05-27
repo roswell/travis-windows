@@ -114,7 +114,6 @@ script:
     fi
   - ros config
   - cat /tmp/proxy-log || true
-  - pkill -9 proxy
 
 after_success:
   - $HOME/.rosproxy/proxy daemon
