@@ -116,7 +116,6 @@ script:
   - cat /tmp/proxy-log || true
 
 after_success:
-  - $HOME/.rosproxy/proxy daemon
   - if [ "$METHOD" = "documents" ] || [ $METHOD = brew ]; then
        git config user.email "auto@example.com";
        git config user.name "Travis-CI";
