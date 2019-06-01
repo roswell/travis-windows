@@ -84,7 +84,7 @@ script:
       sudo make install;
     fi
   - if [ "$METHOD" = "brew" ]; then brew install roswell --HEAD; fi
-  - if [ "$METHOD" = "ci" ]; then sh ./scripts/install-for-ci.sh; fi
+  - if [ "$METHOD" = "ci" ]; then bash -xv ./scripts/install-for-ci.sh; fi
   - if [ "$METHOD" = "valgrind" ]; then
        sh bootstrap;
        CFLAGS=$XCFLAGS ./configure --disable-dependency-tracking --disable-maintainer-mode;
