@@ -112,7 +112,7 @@ fi
 if uname -s | grep -e MSYS_NT;then
     curl -L "https://ci.appveyor.com/api/projects/snmsts/roswell-en89n/artifacts/Roswell-x86_64.zip?branch=master&job=Environment%3A%20MSYS2_ARCH%3Dx86_64,%20MSYS2_BITS%3D64,%20MSYSTEM%3DMINGW64,%20METHOD%3Dcross" --output /tmp/roswell.zip
     ls -l /tmp
-    unzip -n /tmp/roswell.zip -d ~/.roswell/bin/
+    unzip /tmp/roswell.zip -d ~/.roswell/bin/
 fi
 
 if ! which ros >/dev/null; then
