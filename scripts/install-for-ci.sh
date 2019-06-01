@@ -111,14 +111,9 @@ fi
 
 if uname -s | grep -e MSYS_NT;then
     echo $PATH
-    ROSWELL_IN_PATH=$(echo $PATH | grep -F /tmp/roswell)
-    if [ -z "$ROSWELL_IN_PATH" ] ; then
-        echo "/tmp/roswell not found \$PATH"
-        exit 1
-    fi
     curl -L "https://ci.appveyor.com/api/projects/snmsts/roswell-en89n/artifacts/Roswell-x86_64.zip?branch=master&job=Environment%3A%20MSYS2_ARCH%3Dx86_64,%20MSYS2_BITS%3D64,%20MSYSTEM%3DMINGW64,%20METHOD%3Dcross" \
         --output /tmp/roswell.zip
-    unzip -n /tmp/roswell.zip -d /tmp/
+    unzip -n /tmp/roswell.zip -d ~/.roswell/bin/
 fi
 
 if ! which ros >/dev/null; then
