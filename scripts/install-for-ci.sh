@@ -9,7 +9,6 @@ ROSWELL_INSTALL_DIR=${ROSWELL_INSTALL_DIR:-/usr/local}
 ROSWELL_PLATFORMHTML_BASE=${ROSWELL_PLATFORMHTML_BASE:-https://github.com/roswell/sbcl_bin/releases/download/files/build.html}
 ROSWELL_SBCL_BIN_URI=${ROSWELL_SBCL_BIN_URI:-https://github.com/roswell/sbcl_bin/releases/download/}
 ROSWELL_QUICKLISP_DIST_URI=${ROSWELL_QUICKLISP_DIST_URI:-http://beta.quicklisp.org/dist/quicklisp.txt}
-OS_WIN=$(uname -s | grep -e MSYS_NT)
 
 LISP_IMPLS_BIN="$ROSWELL_INSTALL_DIR/bin"
 LISP_IMPLS_DIR="$ROSWELL_DIR/impls/system"
@@ -110,7 +109,7 @@ if which sudo >/dev/null; then
     SUDO=sudo
 fi
 
-if [ -n "$OS_WIN" ]; then
+if uname -s | grep -e MSYS_NT;then
     ROSWELL_IN_PATH=$(echo $PATH | grep -F /tmp/roswell)
     if [ -z "$ROSWELL_IN_PATH" ] ; then
         echo "/tmp/roswell not found \$PATH"
