@@ -110,6 +110,7 @@ if which sudo >/dev/null; then
 fi
 
 if uname -s | grep -e MSYS_NT;then
+    echo $PATH
     ROSWELL_IN_PATH=$(echo $PATH | grep -F /tmp/roswell)
     if [ -z "$ROSWELL_IN_PATH" ] ; then
         echo "/tmp/roswell not found \$PATH"
