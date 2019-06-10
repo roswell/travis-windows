@@ -1,11 +1,11 @@
 language: c
-sudo: false
+sudo: required
 dist: xenial
 env:
   global:
     - PATH=~/.roswell/bin:~/.linuxbrew/bin:$PATH
-    - ROSWELL_BRANCH=$TRAVIS_BRANCH
-    - ROSWELL_INSTALL_DIR=$HOME/.roswell
+    - ROSWELL_BRANCH=release
+    - ROSWELL_INSTALL_DIR=/usr/local
     - ROSWELL_QUICKLISP_DIST_URI=https://github.com/roswell/quicklisp/releases/download/dist/quicklisp.txt
 
   matrix:
@@ -25,6 +25,7 @@ env:
 os:
   - windows
   - linux
+  - osx
 
 cache:
   directories:
@@ -84,7 +85,7 @@ script:
       sudo make install;
     fi
   - if [ "$METHOD" = "brew" ]; then brew install roswell --HEAD; fi
-  - if [ "$METHOD" = "ci" ]; then bash -xv ./scripts/install-for-ci.sh; fi
+  - if [ "$METHOD" = "ci" ]; then curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh; fi
   - if [ "$METHOD" = "valgrind" ]; then
        sh bootstrap;
        CFLAGS=$XCFLAGS ./configure --disable-dependency-tracking --disable-maintainer-mode;
