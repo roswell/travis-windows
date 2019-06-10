@@ -35,6 +35,9 @@ matrix:
       os: osx
     - env: METHOD=ci LISP=mkcl
       os: windows
+  exclude:
+    - env: METHOD=ci LISP=cmu-bin/2017-10
+      os: windows
 
 #branches:
 #  except:
